@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docs — Trakolo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .docs-layout { display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
+  .docs-nav { position: sticky; top: 32px; align-self: start; }
+  .docs-nav .group { margin-bottom: 24px; }
+  .docs-nav .group-title { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin-bottom: 10px; }
+  .docs-nav a { display: block; font-size: 14px; color: var(--ink-soft); padding: 6px 0; }
+  .docs-nav a.current { color: var(--teal-800); font-weight: 600; }
+
+  .doc-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+  .doc-card h3 { font-size: 17px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+  .doc-card .time { font-size: 12px; font-weight: 500; color: var(--teal-800); background: var(--teal-50); padding: 3px 9px; border-radius: 999px; }
+  .doc-card p { font-size: 14px; color: var(--ink-soft); margin-bottom: 14px; }
+  .doc-card code { background: var(--teal-50); color: var(--teal-800); padding: 2px 7px; border-radius: 5px; font-size: 13px; }
+  .doc-card pre { background: var(--teal-900); color: #DFF3EA; padding: 16px 18px; border-radius: 10px; font-size: 13px; overflow-x: auto; margin-top: 10px; }
+
+  .doc-note { background: var(--teal-50); border: 1px solid var(--teal-100); border-radius: 10px; padding: 12px 16px; font-size: 13.5px; color: var(--teal-800); margin-bottom: 14px; }
+  .doc-note b { color: var(--teal-900); }
+  .doc-card table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+  .doc-card th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-faint); padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  .doc-card td { padding: 9px 10px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+  .doc-card td code, .doc-card td:first-child { color: var(--ink); }
+  .doc-card td.yes { color: var(--teal-600); font-weight: 600; }
+  .doc-card tr:last-child td { border-bottom: none; }
+  .doc-card ul.field-list { list-style: none; margin-top: 10px; }
+  .doc-card ul.field-list li { font-size: 13.5px; padding: 6px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; }
+  .doc-card ul.field-list li:last-child { border-bottom: none; }
+  .doc-card ul.field-list .req { font-size: 10.5px; font-weight: 600; color: var(--teal-800); background: var(--teal-50); padding: 2px 7px; border-radius: 999px; flex-shrink: 0; height: fit-content; }
+  .doc-card ul.field-list .opt { font-size: 10.5px; font-weight: 600; color: var(--ink-faint); background: var(--line); padding: 2px 7px; border-radius: 999px; flex-shrink: 0; height: fit-content; }
+
+  @media (max-width: 860px) {
+    .docs-layout { grid-template-columns: 1fr; }
+    .docs-nav { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a href="index.html" class="logo">
+      <svg width="30" height="30" viewBox="0 0 200 200"><rect x="8" y="8" width="184" height="184" rx="40" fill="#E1F5EE" stroke="#0F6E56" stroke-width="6"/><path d="M55,150 L100,100 L150,50" fill="none" stroke="#0F6E56" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="55" cy="150" r="16" fill="#5DCAA5" stroke="#0F6E56" stroke-width="6"/><circle cx="100" cy="100" r="16" fill="#5DCAA5" stroke="#0F6E56" stroke-width="6"/><circle cx="150" cy="50" r="21" fill="#0F6E56" stroke="#0F6E56" stroke-width="6"/></svg>
+      trakolo
+    </a>
+    <div class="nav-links">
+      <a href="how-it-works.html">How it works</a>
+      <a href="features.html">Features</a>
+      <a href="use-cases.html">Use cases</a>
+      <a href="customer-stories.html">Customer stories</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="docs.html" class="current">Docs</a>
+      <a href="https://portal.trakolo.com/login" class="nav-signin-mobile">Sign in</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <div class="nav-actions">
+      <a href="https://portal.trakolo.com/login" class="btn btn-ghost">Sign in</a>
+      <a href="https://portal.trakolo.com/login" class="btn btn-primary">Start free</a>
+    </div>
+  </nav>
+</div>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>Documentation</h1>
+    <p>Everything you need to get your team up and running — from your first ticket to a full API integration.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap docs-layout">
+    <div class="docs-nav">
+      <div class="group">
+        <div class="group-title">Getting started</div>
+        <a href="#quickstart" class="current">Quickstart</a>
+        <a href="#workspace">Setting up your workspace</a>
+        <a href="#import">Importing assets</a>
+      </div>
+      <div class="group">
+        <div class="group-title">Core concepts</div>
+        <a href="#tickets">Tickets &amp; SLAs</a>
+        <a href="#assets">Assets &amp; licenses</a>
+        <a href="#boards">Boards &amp; sprints</a>
+      </div>
+      <div class="group">
+        <div class="group-title">Integrations</div>
+        <a href="#slack">Slack &amp; Teams</a>
+        <a href="#git">Git integration</a>
+      </div>
+      <div class="group">
+        <div class="group-title">API &amp; bulk data</div>
+        <a href="#api-access">Getting API access</a>
+        <a href="#api">API reference</a>
+        <a href="#bulk-assets">Bulk upload &amp; update assets</a>
+      </div>
+      <div class="group">
+        <div class="group-title">Standalone / On-premise</div>
+        <a href="#onprem-install">Installation guide</a>
+        <a href="#onprem-license">License management</a>
+        <a href="#onprem-upgrade">Upgrades &amp; backups</a>
+      </div>
+      <div class="group">
+        <div class="group-title">More</div>
+        <a href="release-notes.html">Release notes</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="doc-card" id="quickstart">
+        <h3>Quickstart <span class="time">5 min</span></h3>
+        <p>Create your workspace, invite your team, and log your first ticket.</p>
+        <p>1. Sign up and create a workspace name.<br>2. Invite teammates by email or a shared link.<br>3. Create your first board — Tickets, Assets, or Dev.<br>4. Log a test ticket to see routing and SLAs in action.</p>
+      </div>
+
+      <div class="doc-card" id="workspace">
+        <h3>Setting up your workspace</h3>
+        <p>Configure teams, categories, and SLA rules before rolling out to the whole company.</p>
+        <p>Go to <code>Settings → Workspace</code> to define ticket categories (e.g. Hardware, Access, Software) and assign default owners and SLA targets for each.</p>
+      </div>
+
+      <div class="doc-card" id="import">
+        <h3>Importing assets</h3>
+        <p>Moving off Jira, ServiceNow, Zendesk, Freshdesk, Trello, or a spreadsheet? The guided migration wizard maps fields for you, runs as a background job, and shows a completed/skipped/error count when it's done — no API key needed, it runs from inside your workspace.</p>
+        <p>Open <code>Admin → Integrations → Data migration</code> to pick a source and run a one-time import. For ongoing bulk uploads and updates to assets already in Trakolo, see <a href="#bulk-assets" style="color:var(--teal-800); font-weight:600;">Bulk upload &amp; update assets</a> below.</p>
+      </div>
+
+      <div class="doc-card" id="tickets">
+        <h3>Tickets &amp; SLAs</h3>
+        <p>Every ticket has a category, priority, and SLA clock that starts the moment it's logged. Escalation rules can reassign or notify a manager automatically if a ticket is close to breaching.</p>
+      </div>
+
+      <div class="doc-card" id="assets">
+        <h3>Assets &amp; licenses</h3>
+        <p>Assets can be linked directly to tickets — so when someone reports a laptop issue, its full history, warranty status, and current owner are visible in the same view.</p>
+      </div>
+
+      <div class="doc-card" id="boards">
+        <h3>Boards &amp; sprints</h3>
+        <p>Dev teams can convert any ticket into a sprint item, estimate it, and track it on a kanban or sprint board — while IT still sees its SLA status in the original ticket view.</p>
+      </div>
+
+      <div class="doc-card" id="slack">
+        <h3>Slack &amp; Teams integration</h3>
+        <p>Install the Trakolo app to create tickets with <code>/trakolo new</code> and get status updates posted directly to a channel.</p>
+      </div>
+
+      <div class="doc-card" id="git">
+        <h3>Git integration</h3>
+        <p>Connect a GitHub or GitLab repo to link commits and pull requests to tickets automatically when a branch name includes the ticket ID.</p>
+      </div>
+
+      <div class="doc-card" id="api-access">
+        <h3>Getting API access</h3>
+        <div class="doc-note"><b>Do you need to be a customer?</b> Yes. The API is workspace-scoped — every request runs as a specific workspace, so there's no public or anonymous access. Sign up for a workspace first, then generate a key from inside it.</div>
+        <p>The REST API is included on the <b>Team plan and above</b> (not available on Free). One workspace can issue multiple keys — for example, one per integration you build.</p>
+        <p>1. Sign in as a workspace admin.<br>2. Go to <code>Settings → Integrations → API keys → Generate key</code>.<br>3. Name the key (e.g. "Reporting export") and choose its scope — <code>read-only</code> or <code>read-write</code>.<br>4. Copy the key immediately — the full value is only shown once.</p>
+        <p>Every request needs the key in the <code>Authorization</code> header, and is rejected with <code>401 Unauthorized</code> without it:</p>
+        <pre>GET /v1/tickets?status=open
+Authorization: Bearer YOUR_API_KEY</pre>
+        <table>
+          <tr><th>Plan</th><th>API access</th><th>Rate limit</th></tr>
+          <tr><td>Free</td><td>Not available</td><td>—</td></tr>
+          <tr><td>Team</td><td class="yes">Included</td><td>300 req/min per workspace</td></tr>
+          <tr><td>Business</td><td class="yes">Included</td><td>600 req/min per workspace</td></tr>
+          <tr><td>Enterprise</td><td class="yes">Included</td><td>Custom, negotiated</td></tr>
+        </table>
+        <p>Requests over the limit get a <code>429 Too Many Requests</code> with a <code>Retry-After</code> header. Keys can be revoked instantly from the same settings page — revoked keys fail closed within seconds.</p>
+      </div>
+
+      <div class="doc-card" id="api">
+        <h3>API reference</h3>
+        <p>Full REST API for tickets, assets, boards, and reporting, plus the bulk endpoints documented below. All endpoints are relative to <code>https://api.trakolo.com</code> and return JSON.</p>
+        <table>
+          <tr><th>Method &amp; path</th><th>Description</th></tr>
+          <tr><td><code>GET /v1/tickets</code></td><td>List tickets, filterable by status, priority, category</td></tr>
+          <tr><td><code>POST /v1/tickets</code></td><td>Create a ticket</td></tr>
+          <tr><td><code>GET /v1/assets</code></td><td>List assets, filterable by type, owner, status</td></tr>
+          <tr><td><code>POST /v1/assets/bulk</code></td><td>Bulk create/update assets — see below</td></tr>
+          <tr><td><code>GET /v1/assets/bulk/:job_id</code></td><td>Check the status of a bulk job</td></tr>
+          <tr><td><code>GET /v1/boards/:id/cards</code></td><td>List cards on a sprint or kanban board</td></tr>
+          <tr><td><code>POST /v1/webhooks</code></td><td>Register a webhook for ticket, asset, or board events</td></tr>
+        </table>
+      </div>
+
+      <div class="doc-card" id="bulk-assets">
+        <h3>Bulk upload &amp; update assets</h3>
+        <p>Once you're past the initial migration, day-to-day fleet changes (a new laptop batch, a mass license renewal, a re-org that moves owners) go through the same bulk endpoint — either from the UI or the API. Both use the exact same file format, so a template built for one works for the other.</p>
+        <p><b>From the UI:</b> <code>SAM → Asset inventory → Bulk upload</code> — download the CSV template, fill it in, and drag it back in. You get a preview of what will be created vs. updated before anything is saved.</p>
+        <p><b>From the API:</b></p>
+        <pre>POST /v1/assets/bulk
+Authorization: Bearer YOUR_API_KEY
+Content-Type: text/csv
+
+asset_tag,name,type,category,owner_email,purchase_date,license_expiry,cost_center
+AST-2041,MacBook Pro 14" M4,hardware,laptop,jane@company.com,2026-06-01,,ENG-100
+AST-1187,Figma Team License,software,saas,design-team@company.com,,2027-03-01,DES-200</pre>
+        <p>The response is <code>202 Accepted</code> with a job id — bulk jobs run async, the same way the migration wizard does:</p>
+        <pre>{ "job_id": "blk_8f21ac", "status": "processing", "rows_received": 2 }
+
+GET /v1/assets/bulk/blk_8f21ac
+{ "status": "completed", "created": 1, "updated": 1, "skipped": 0, "errors": [] }</pre>
+        <p>How the system decides create vs. update, and what it requires:</p>
+        <ul class="field-list">
+          <li><span class="req">required</span> <span><code>asset_tag</code> — the upsert key. A matching existing tag updates that asset; no match creates a new one. This is the only column the system uses to decide create-vs-update.</span></li>
+          <li><span class="req">required</span> <span><code>name</code>, <code>type</code> — <code>type</code> must be one of <code>hardware</code>, <code>software</code>, <code>saas</code></span></li>
+          <li><span class="opt">optional</span> <span><code>category</code>, <code>owner_email</code>, <code>purchase_date</code>, <code>license_expiry</code> (ISO <code>YYYY-MM-DD</code>), <code>cost_center</code> — blank on an update leaves the existing value untouched, it does not clear it</span></li>
+        </ul>
+        <p>Limits: 10,000 rows or 15MB per file, whichever comes first — split larger exports into multiple calls. <code>owner_email</code> must match a user already in the workspace or the row is rejected (shown in the job's <code>errors</code> array with a row number and reason), not silently dropped.</p>
+      </div>
+
+      <div class="doc-card" id="onprem-install">
+        <h3>Standalone / On-premise: installation guide <span class="time">45 min</span></h3>
+        <p>The Standalone edition runs entirely inside your environment — your servers, your cloud tenant, or an air-gapped network. Nothing leaves your infrastructure, including license validation.</p>
+        <p><b>System requirements:</b></p>
+        <table>
+          <tr><th>Component</th><th>Minimum</th><th>Recommended (500+ users)</th></tr>
+          <tr><td>CPU / RAM</td><td>4 vCPU / 8 GB</td><td>8 vCPU / 16 GB</td></tr>
+          <tr><td>Storage</td><td>50 GB SSD</td><td>200 GB SSD, snapshot-capable</td></tr>
+          <tr><td>OS</td><td>Ubuntu 22.04+, RHEL 9+, or any Docker host</td><td>Same, with a container runtime</td></tr>
+          <tr><td>Database</td><td>Bundled PostgreSQL</td><td>External PostgreSQL 15+ you manage</td></tr>
+        </table>
+        <p><b>Install with Docker Compose</b> (the supported path — a native installer exists for air-gapped RHEL):</p>
+        <pre># 1. Download the bundle from your customer portal (or via USB for air-gapped)
+curl -O https://downloads.trakolo.com/standalone/trakolo-2026.7.2.tar.gz
+tar -xzf trakolo-2026.7.2.tar.gz && cd trakolo
+
+# 2. Set your hostname and admin email
+cp .env.example .env && edit .env
+
+# 3. Start — first boot runs migrations and prompts for the license file
+docker compose up -d
+
+# 4. Open https://your-host and upload your .trklic license file</pre>
+        <p>First login creates the initial admin account. From there, setup is identical to cloud: <code>Settings → Workspace</code>, invite users, enable modules.</p>
+      </div>
+
+      <div class="doc-card" id="onprem-license">
+        <h3>Standalone / On-premise: license management</h3>
+        <div class="doc-note"><b>Where it lives:</b> <code>Admin → Settings → License</code>. On-premise has no billing page — your license is a signed <code>.trklic</code> file, validated locally. No phone-home, works air-gapped.</div>
+        <p>The license file encodes four things: who it's licensed to, the <b>named-user seat count</b>, the <b>modules enabled</b> (ITSM, SAM, Dev boards, Reporting, AI features), and the <b>support &amp; upgrades expiry date</b>.</p>
+
+        <p><b>How the file is generated:</b> you never generate this yourself — it's issued by Trakolo. Whenever you buy seats, add a module, or renew support, your account team (or you, via a self-serve request on the customer portal) triggers an issuance on our side: a platform operator opens your workspace record, sets the new seat count / module list / expiry date, and generates a fresh <code>.trklic</code> — a JSON payload signed with Trakolo's private key. Only our public key, bundled with your installation, can verify that signature; nobody outside Trakolo can mint a valid file. The new file is emailed to your license contact and also available for download from the customer portal, replacing the old one.</p>
+
+        <p><b>How to handle it once you have the file:</b></p>
+        <ul class="field-list">
+          <li><span class="req">seats</span> <span>Adding seats — buy an expansion, receive the replacement <code>.trklic</code>, upload it under <code>License → Upload new license file</code>. Applies instantly, no restart.</span></li>
+          <li><span class="req">modules</span> <span>Enabling a module you didn't license — same flow: new license file, upload, the module appears in Settings immediately.</span></li>
+          <li><span class="req">renewal</span> <span>Support &amp; upgrades expiry — the product <b>keeps working forever</b> after expiry (it's a perpetual license). What stops: new version upgrades and support tickets. Renewing issues a new file with a new date.</span></li>
+          <li><span class="opt">air-gap</span> <span>Offline activation — for networks with no outbound access, <code>License → Offline activation</code> generates a request code; exchange it on the customer portal from any machine and paste the response back.</span></li>
+          <li><span class="opt">storage</span> <span>Keep the file itself somewhere safe (password manager, secrets vault) — <code>License → Download current license</code> re-downloads it any time, and it's included automatically in the nightly backup archive below.</span></li>
+        </ul>
+        <p>If the license expires or seats are exceeded, admins get a banner and a 30-day grace period — users are never locked out mid-incident.</p>
+      </div>
+
+      <div class="doc-card" id="onprem-upgrade">
+        <h3>Standalone / On-premise: upgrades &amp; backups</h3>
+        <p>Upgrades are manual and under your control — download the new bundle, then:</p>
+        <pre>docker compose pull && docker compose up -d   # migrations run automatically</pre>
+        <p>Always take a database snapshot first. The bundled PostgreSQL can be dumped with <code>./bin/trakolo-backup</code>, which writes a single restorable archive (database + uploaded attachments + your license file). Point it at a network share or object storage on a nightly cron.</p>
+        <p>Version support policy: each release gets security fixes for 18 months. You can skip versions — migrations chain automatically — but upgrading requires an active support &amp; upgrades plan. See what's new in each version on the <a href="release-notes.html" style="color:var(--teal-800);font-weight:600;">release notes →</a> page before you upgrade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>© 2026 Trakolo. Never lose track.</span>
+    <span>Privacy · Terms · Contact · <a href="release-notes.html" style="color:inherit;">Release notes</a> · <a href="investors.html" style="color:inherit;">Investors</a></span>
+  </footer>
+</div>
+
+<script src="nav.js" defer></script>
+</body>
+</html>
