@@ -2,7 +2,7 @@
 
 The public marketing site — eventually `trakolo.com` / `www.trakolo.com`. Static HTML/CSS, no build step, no framework. Hosted on **GitHub Pages**, deliberately separate from [`kjmutt/trakolo`](https://github.com/kjmutt/trakolo) (the product application) and [`kjmutt/trakolo-infra`](https://github.com/kjmutt/trakolo-infra) (cloud infrastructure) — see the reasoning below.
 
-**Current state: previewing at `https://kjmutt.github.io/trakolo-website/`.** No custom domain wired up yet — no `CNAME` file, no DNS changes. See "Moving to the custom domain" below for that step when ready.
+**Current state: `CNAME` (`trakolo.com`) is committed — moving off the `github.io` preview onto the real domain.** What's left is registrar-side: the DNS records below, then flipping the custom domain on in Settings → Pages. See "Moving to the custom domain" below.
 
 ## Why this is its own repo
 
@@ -21,20 +21,22 @@ Settings → Pages → **Source**: Deploy from a branch → `main` / `(root)` �
 
 **Requires the repo to be public** — GitHub Pages on private repos needs a paid GitHub plan.
 
-## Moving to the custom domain (later)
+## Moving to the custom domain
 
-1. Add a `CNAME` file at the repo root containing `trakolo.com`.
-2. Add these DNS records at the registrar:
+1. ~~Add a `CNAME` file at the repo root containing `trakolo.com`.~~ Done.
+2. Add these DNS records at the registrar (GoDaddy: **My Products → DNS → DNS Management** for `trakolo.com`):
 
-| Type | Host | Value |
-|---|---|---|
-| A | `@` (apex `trakolo.com`) | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| CNAME | `www` | `kjmutt.github.io` |
+| Type | Host | Value | Notes |
+|---|---|---|---|
+| A | `@` | `185.199.108.153` | GoDaddy ships a default `@` A record (usually its parking page IP) — **edit it** to this value rather than adding a duplicate |
+| A | `@` | `185.199.109.153` | add |
+| A | `@` | `185.199.110.153` | add |
+| A | `@` | `185.199.111.153` | add |
+| CNAME | `www` | `kjmutt.github.io` | GoDaddy usually has a default `www` CNAME pointing at `@` — edit it to this value |
 
-3. Settings → Pages → **Custom domain** → enter `trakolo.com` → wait for the DNS check to pass → enable **Enforce HTTPS** (certificate issuance can take up to 24 hours after DNS propagates).
+GoDaddy only allows one record per host+type combo for CNAME, but allows multiple A records on the same host — so the four `@` A records coexist; just remove/replace GoDaddy's default parking A record rather than leaving it alongside these four.
+
+3. Settings → Pages → **Custom domain** → enter `trakolo.com` → wait for the DNS check to pass → enable **Enforce HTTPS** (certificate issuance can take up to 24 hours after DNS propagates — GoDaddy DNS itself usually propagates in 10-60 minutes, but can take longer).
 
 ## How this site links to the actual application
 
