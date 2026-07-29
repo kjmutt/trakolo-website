@@ -42,7 +42,8 @@ h1, h2, h3, h4 { font-family: 'Sora', sans-serif; font-weight: 600; letter-spaci
 /* Nav */
 nav { display: flex; align-items: center; padding: 22px 0; position: relative; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 19px; color: var(--teal-800); font-family: 'Sora', sans-serif; flex-shrink: 0; }
-.nav-links { display: flex; gap: 28px; font-size: 15px; color: var(--ink-soft); font-weight: 500; margin-left: 48px; }
+.nav-links { display: flex; gap: 24px; font-size: 14.5px; color: var(--ink-soft); font-weight: 500; margin-left: 40px; }
+.nav-links a { white-space: nowrap; }
 .nav-links a.current { color: var(--teal-800); }
 .nav-actions { display: flex; align-items: center; gap: 16px; margin-left: auto; padding-left: 24px; }
 .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 8px; font-size: 18px; line-height: 1; width: 40px; height: 40px; align-items: center; justify-content: center; cursor: pointer; color: var(--ink); }
@@ -67,7 +68,10 @@ section > .wrap > p.lead { color: var(--ink-soft); font-size: 16px; max-width: 5
 
 footer { border-top: 1px solid var(--line); padding: 32px 0; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--ink-faint); }
 
-@media (max-width: 860px) {
+/* Nav collapses to the hamburger menu well before the full link set would
+   run out of room and wrap mid-link — this breakpoint is intentionally
+   wider than the general mobile layout breakpoint below. */
+@media (max-width: 1180px) {
   .nav-toggle { display: inline-flex; }
   .nav-actions .btn-ghost { display: none; }
   .nav-links {
@@ -77,8 +81,11 @@ footer { border-top: 1px solid var(--line); padding: 32px 0; display: flex; alig
     padding: 6px 18px; box-shadow: 0 16px 32px -16px rgba(15,33,25,0.22); z-index: 60;
   }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 13px 0; border-bottom: 1px solid var(--line); }
+  .nav-links a { padding: 13px 0; border-bottom: 1px solid var(--line); white-space: normal; }
   .nav-links a:last-child { border-bottom: none; }
   .nav-signin-mobile { display: block; font-weight: 600; color: var(--teal-800); }
+}
+
+@media (max-width: 860px) {
   .page-header h1 { font-size: 30px; }
 }
