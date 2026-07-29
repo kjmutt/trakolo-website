@@ -1,6 +1,8 @@
 # trakolo-website
 
-The public marketing site — `trakolo.com` / `www.trakolo.com`. Static HTML/CSS, no build step, no framework. Hosted on **GitHub Pages**, deliberately separate from [`kjmutt/trakolo`](https://github.com/kjmutt/trakolo) (the product application) and [`kjmutt/trakolo-infra`](https://github.com/kjmutt/trakolo-infra) (cloud infrastructure) — see the reasoning below.
+The public marketing site — eventually `trakolo.com` / `www.trakolo.com`. Static HTML/CSS, no build step, no framework. Hosted on **GitHub Pages**, deliberately separate from [`kjmutt/trakolo`](https://github.com/kjmutt/trakolo) (the product application) and [`kjmutt/trakolo-infra`](https://github.com/kjmutt/trakolo-infra) (cloud infrastructure) — see the reasoning below.
+
+**Current state: previewing at `https://kjmutt.github.io/trakolo-website/`.** No custom domain wired up yet — no `CNAME` file, no DNS changes. See "Moving to the custom domain" below for that step when ready.
 
 ## Why this is its own repo
 
@@ -11,15 +13,18 @@ The public marketing site — `trakolo.com` / `www.trakolo.com`. Static HTML/CSS
 | Review bar | 1 approval + CI (unit tests, SAST) | Lighter — a homepage copy edit doesn't need a schema-change-grade gate |
 | Deploy cadence | Tied to the app release train | Ships independently, far more often |
 | Hosting | Azure (Container Apps + Static Web Apps) | GitHub Pages — free, no build step needed for static HTML |
-| Domain | `{tenant}.trakolo.com`, `portal.trakolo.com` | `trakolo.com` / `www.trakolo.com` |
+| Domain | `{tenant}.trakolo.com`, `portal.trakolo.com` | `trakolo.com` / `www.trakolo.com` (once wired up) |
 
-## Hosting: GitHub Pages with a custom domain
+## Enabling the preview
 
-This repo publishes via GitHub Pages (Settings → Pages → Deploy from a branch → `main` / root), not Azure — there's no product traffic or backend here, so a managed static host is simpler and free. A `CNAME` file in the repo root pins the custom domain.
+Settings → Pages → **Source**: Deploy from a branch → `main` / `(root)` → Save. Live within a minute at `https://kjmutt.github.io/trakolo-website/`.
 
-**GitHub Pages requires the repo to be public** (private-repo Pages needs a paid GitHub plan) — make sure `trakolo-website` is public before enabling Pages, or upgrade the plan first.
+**Requires the repo to be public** — GitHub Pages on private repos needs a paid GitHub plan.
 
-### DNS records to add
+## Moving to the custom domain (later)
+
+1. Add a `CNAME` file at the repo root containing `trakolo.com`.
+2. Add these DNS records at the registrar:
 
 | Type | Host | Value |
 |---|---|---|
@@ -29,7 +34,7 @@ This repo publishes via GitHub Pages (Settings → Pages → Deploy from a branc
 | A | `@` | `185.199.111.153` |
 | CNAME | `www` | `kjmutt.github.io` |
 
-Then in **Settings → Pages → Custom domain**, enter `trakolo.com` and enable **Enforce HTTPS** once GitHub finishes issuing the certificate (can take up to 24 hours after DNS propagates).
+3. Settings → Pages → **Custom domain** → enter `trakolo.com` → wait for the DNS check to pass → enable **Enforce HTTPS** (certificate issuance can take up to 24 hours after DNS propagates).
 
 ## How this site links to the actual application
 
