@@ -1,0 +1,41 @@
+{
+  "_comment": "This is a GitHub repository ruleset, not something GitHub applies just by being committed. To activate it: Settings -> Rules -> Rulesets -> New ruleset -> Import a ruleset -> upload this file (or paste its contents) -> Create. Requires repo admin. Rulesets aren't reachable via this repo's current GitHub App/token scope, which is why this is committed as a spec instead of applied automatically. Lighter than the application repo's ruleset: 1 reviewer, no SAST/unit-test checks, just link-check + HTML validity, matching the lower blast radius of a static marketing site.",
+  "name": "main-branch-protection",
+  "target": "branch",
+  "enforcement": "active",
+  "bypass_actors": [],
+  "conditions": {
+    "ref_name": {
+      "include": ["~DEFAULT_BRANCH"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "non_fast_forward"
+    },
+    {
+      "type": "pull_request",
+      "parameters": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_review": true,
+        "require_last_push_approval": false,
+        "required_review_thread_resolution": true
+      }
+    },
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": true,
+        "required_status_checks": [
+          { "context": "html-validate" },
+          { "context": "link-check" }
+        ]
+      }
+    }
+  ]
+}
