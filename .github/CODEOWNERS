@@ -1,0 +1,14 @@
+# CODEOWNERS
+# Replace the placeholder @trakolo/* teams with real GitHub team slugs
+# before relying on this for required-review enforcement.
+
+# Default: marketing/content team owns everything
+*                    @trakolo/marketing
+
+# Pricing content should be checked against what platform.plans actually
+# supports — a platform reviewer catches copy promising a plan feature
+# that doesn't exist yet.
+/pricing.html        @trakolo/marketing @trakolo/platform-team
+
+# Anything that changes how PRs are gated needs a platform-team review
+/.github/            @trakolo/platform-team
