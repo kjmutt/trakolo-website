@@ -1,6 +1,6 @@
 # trakolo-website
 
-The public marketing site — `trakolo.com` / `www.trakolo.com`. Static HTML/CSS, no build step, no framework. This is a deliberately separate repo from [`kjmutt/trakolo`](https://github.com/kjmutt/trakolo) (the product application) and [`kjmutt/trakolo-infra`](https://github.com/kjmutt/trakolo-infra) (cloud infrastructure) — see the reasoning below.
+The public marketing site — `trakolo.com` / `www.trakolo.com`. Static HTML/CSS, no build step, no framework. Hosted on **GitHub Pages**, deliberately separate from [`kjmutt/trakolo`](https://github.com/kjmutt/trakolo) (the product application) and [`kjmutt/trakolo-infra`](https://github.com/kjmutt/trakolo-infra) (cloud infrastructure) — see the reasoning below.
 
 ## Why this is its own repo
 
@@ -10,9 +10,26 @@ The public marketing site — `trakolo.com` / `www.trakolo.com`. Static HTML/CSS
 | Who edits it | Engineers | Marketing/content, occasionally engineers |
 | Review bar | 1 approval + CI (unit tests, SAST) | Lighter — a homepage copy edit doesn't need a schema-change-grade gate |
 | Deploy cadence | Tied to the app release train | Ships independently, far more often |
+| Hosting | Azure (Container Apps + Static Web Apps) | GitHub Pages — free, no build step needed for static HTML |
 | Domain | `{tenant}.trakolo.com`, `portal.trakolo.com` | `trakolo.com` / `www.trakolo.com` |
 
-Same Azure Front Door resource routes both — different host/path rules, not two separate edge layers. See the application repo's architecture documentation for the full edge/routing picture.
+## Hosting: GitHub Pages with a custom domain
+
+This repo publishes via GitHub Pages (Settings → Pages → Deploy from a branch → `main` / root), not Azure — there's no product traffic or backend here, so a managed static host is simpler and free. A `CNAME` file in the repo root pins the custom domain.
+
+**GitHub Pages requires the repo to be public** (private-repo Pages needs a paid GitHub plan) — make sure `trakolo-website` is public before enabling Pages, or upgrade the plan first.
+
+### DNS records to add
+
+| Type | Host | Value |
+|---|---|---|
+| A | `@` (apex `trakolo.com`) | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `kjmutt.github.io` |
+
+Then in **Settings → Pages → Custom domain**, enter `trakolo.com` and enable **Enforce HTTPS** once GitHub finishes issuing the certificate (can take up to 24 hours after DNS propagates).
 
 ## How this site links to the actual application
 
@@ -21,7 +38,7 @@ There's no shared runtime or shared codebase — just a few links crossing the d
 - **Sign in / Start free** buttons → `https://portal.trakolo.com/login`, the real tenant-agnostic sign-in chooser served by the product app.
 - **"See it in action" links** (e.g. "See TS-4833 on the desk →") → `https://demo.trakolo.com/...`, a public, sandboxed demo tenant — never the authenticated product domain.
 - **Signup** writes to the real tenant registry, so it's a product-side concern: this site's calls-to-action link out to the product's sign-up flow rather than re-implementing tenant provisioning here.
-- **Contact** (`contact.html`) is a real page in this repo, but its form doesn't post anywhere yet — wire it to a form-handling service (or a lightweight serverless function) before launch. It is not connected to the product API.
+- **Contact** (`contact.html`) is a real page in this repo, but its form doesn't post anywhere yet — wire it to a form-handling service (or a lightweight serverless function, e.g. an Azure Function or a GitHub Pages-compatible form service like Formspree) before launch, since GitHub Pages itself only serves static files and can't run backend form-handling code.
 
 ## Pages
 
