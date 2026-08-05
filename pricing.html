@@ -77,79 +77,8 @@
 
 <section>
   <div class="wrap">
-    <div class="plans">
-      <div class="plan-card">
-        <h3>Free</h3>
-        <p class="desc">For small teams getting started with tickets.</p>
-        <p class="price">£0<span> /month</span></p>
-        <ul>
-          <li>Up to 10 users</li>
-          <li>Up to 50 Self-Service Portal users</li>
-          <li>Unlimited tickets</li>
-          <li>Basic kanban board</li>
-          <li>Email support</li>
-          <li>1 GB database storage</li>
-          <li>2 GB file &amp; document storage</li>
-        </ul>
-        <a href="https://portal.trakolo.com/login" class="btn btn-ghost">Start free</a>
-      </div>
-
-      <div class="plan-card featured">
-        <span class="plan-badge">Most popular · 30% off</span>
-        <h3>Team</h3>
-        <p class="desc">For growing IT and dev teams that need it all.</p>
-        <p class="price">£6.30<span> /user/month</span></p>
-        <p style="font-size:12.5px; color:var(--ink-faint); margin-top:-8px; margin-bottom:16px; text-decoration:line-through;">was £9.00</p>
-        <ul>
-          <li>Everything in Free</li>
-          <li>Up to 1,000 Self-Service Portal users</li>
-          <li>Software asset management</li>
-          <li>SLA timers &amp; escalations</li>
-          <li>Sprint boards &amp; Git integration</li>
-          <li>Custom dashboards</li>
-          <li>REST API &amp; bulk data access</li>
-          <li>AI Agent licenses (add-on, per agent)</li>
-          <li>20 GB database storage</li>
-          <li>100 GB file &amp; document storage</li>
-        </ul>
-        <a href="https://portal.trakolo.com/login" class="btn btn-primary">Start free trial</a>
-      </div>
-
-      <div class="plan-card">
-        <span class="plan-badge" style="background:var(--ink-faint);">30% off</span>
-        <h3>Business</h3>
-        <p class="desc">For multi-department IT operations.</p>
-        <p class="price">£12.60<span> /user/month</span></p>
-        <p style="font-size:12.5px; color:var(--ink-faint); margin-top:-8px; margin-bottom:16px; text-decoration:line-through;">was £18.00</p>
-        <ul>
-          <li>Everything in Team</li>
-          <li>Up to 10,000 Self-Service Portal users</li>
-          <li>Audit-ready compliance exports</li>
-          <li>Role-based permissions</li>
-          <li>Priority support</li>
-          <li>2 AI Agent licenses included</li>
-          <li>100 GB database storage</li>
-          <li>500 GB file &amp; document storage</li>
-        </ul>
-        <a href="https://portal.trakolo.com/login" class="btn btn-ghost">Start free trial</a>
-      </div>
-
-      <div class="plan-card">
-        <h3>Enterprise</h3>
-        <p class="desc">For large orgs with security &amp; compliance needs.</p>
-        <p class="price">Custom</p>
-        <ul>
-          <li>Everything in Business</li>
-          <li>Unlimited Self-Service Portal users</li>
-          <li>SSO &amp; SCIM provisioning</li>
-          <li>Dedicated onboarding</li>
-          <li>Custom contract &amp; SLA</li>
-          <li>Custom AI Agent license count</li>
-          <li>500 GB database storage, expandable</li>
-          <li>2 TB file &amp; document storage, expandable</li>
-        </ul>
-        <a href="contact.html" class="btn btn-ghost">Contact sales</a>
-      </div>
+    <div class="plans" id="plans-root">
+      <div class="plan-card"><p class="desc">Loading current pricing…</p></div>
     </div>
   </div>
 </section>
@@ -164,30 +93,8 @@
     <h2>Choose how Trakolo runs</h2>
     <p class="lead">Most teams run on our cloud. Regulated or security-sensitive teams can install Trakolo entirely inside their own environment instead.</p>
 
-    <div class="plans" style="grid-template-columns: 1fr 1fr;">
-      <div class="plan-card">
-        <h3>Cloud (SaaS)</h3>
-        <p class="desc">Hosted and managed by us. Subscription billing, monthly or annual.</p>
-        <ul>
-          <li>No infrastructure to manage</li>
-          <li>Automatic updates &amp; patching</li>
-          <li>Billed per user, per month</li>
-          <li>Get started in minutes</li>
-        </ul>
-        <a href="https://portal.trakolo.com/login" class="btn btn-primary">Start free →</a>
-      </div>
-
-      <div class="plan-card" style="border-color: var(--teal-600);">
-        <h3>Standalone / On-premise</h3>
-        <p class="desc">A perpetual license installed into your own environment — your servers, your cloud tenant, or an air-gapped network.</p>
-        <ul>
-          <li>One-time perpetual license fee, from £4,200</li>
-          <li>Optional annual support &amp; upgrades plan (18% of license)</li>
-          <li>Full data residency — nothing leaves your environment</li>
-          <li>Ideal for regulated industries and government</li>
-        </ul>
-        <a href="contact.html" class="btn btn-ghost">Talk to sales</a>
-      </div>
+    <div class="plans" style="grid-template-columns: 1fr 1fr;" id="deploy-root">
+      <div class="plan-card"><p class="desc">Loading…</p></div>
     </div>
 
     <p style="font-size: 13.5px; color: var(--ink-faint); margin-top: 20px; max-width: 640px;">
@@ -205,42 +112,8 @@
       <span class="tag">Compare plans</span>
     </div>
     <h2>Full feature comparison</h2>
-    <div style="overflow-x:auto;">
-    <table class="compare-table">
-      <tr><th>Feature</th><th>Free</th><th>Team</th><th>Business</th><th>Enterprise</th></tr>
-      <tr><td>Users (agents, dev &amp; admins)</td><td>Up to 10</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
-      <tr><td>Self-Service Portal (SSP) users</td><td>Up to 50</td><td>Up to 1,000</td><td>Up to 10,000</td><td>Unlimited</td></tr>
-      <tr><td>AI Agent — Service desk (triage, auto-resolution)</td><td>—</td><td>Add-on, per agent</td><td>1 included, add more</td><td>Custom</td></tr>
-      <tr><td>AI Agent — Coding (backlog automation, opens PRs)</td><td>—</td><td>Add-on, per agent</td><td>1 included, add more</td><td>Custom</td></tr>
-      <tr><td>Database storage</td><td>1 GB</td><td>20 GB</td><td>100 GB</td><td>500 GB, expandable</td></tr>
-      <tr><td>File &amp; document storage</td><td>2 GB</td><td>100 GB</td><td>500 GB</td><td>2 TB, expandable</td></tr>
-      <tr><td>Ticketing &amp; SLAs</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Asset management</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Dev boards &amp; Git integration</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>REST API &amp; bulk import/export</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Ticket channels (email, phone, chat, Slack)</td><td>Portal + email</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Employee self-service HR (payslips, leave, offer letter)</td><td>—</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Change management (CRs, CAB approval, scheduling)</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Business rules automation</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Data migration wizard (Jira, ServiceNow, CSV…)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Knowledge base &amp; service catalog (create &amp; assign items)</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Document library (files, video, audio, images)</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Confluence-style wiki spaces</td><td>—</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Problem management &amp; on-call</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Team workload (drag-to-assign &amp; pairing)</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Asset discovery (agent + network scan)</td><td>—</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Gantt charts, epics &amp; roadmap</td><td>—</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Dark mode, themes &amp; 8 languages</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>AI triage &amp; AI agent auto-resolution</td><td>—</td><td>Add-on</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>AI Copilot (agent, admin &amp; self-service portal)</td><td>—</td><td>Add-on</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Granular per-feature controls</td><td>—</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Audit-ready reporting</td><td>—</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Custom roles &amp; permission matrix</td><td>—</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>Workspace API keys</td><td>—</td><td>—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-      <tr><td>SSO &amp; SCIM</td><td>—</td><td>—</td><td>—</td><td class="yes">✓</td></tr>
-      <tr><td>Standalone / on-premise option</td><td>—</td><td>—</td><td>—</td><td class="yes">✓</td></tr>
-      <tr><td>Support</td><td>Email</td><td>Email &amp; chat</td><td>Priority</td><td>Dedicated</td></tr>
-    </table>
+    <div style="overflow-x:auto;" id="compare-root">
+      <p style="color: var(--ink-soft); font-size: 14px;">Loading…</p>
     </div>
   </div>
 </section>
@@ -276,6 +149,64 @@
   </footer>
 </div>
 
+<script>
+// Live pricing config, published by Platform Admin at
+// https://kjmutt.github.io/trakolomockui/saas-admin-pricing.html — this page
+// has no data of its own, it just renders whatever that file currently says.
+const PRICING_CONFIG_URL = 'https://kjmutt.github.io/trakolomockui/pricing-config.json';
+
+function esc(s){ const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+fetch(PRICING_CONFIG_URL)
+  .then(r => r.json())
+  .then(renderPricing)
+  .catch(err => {
+    document.getElementById('plans-root').innerHTML = '<p style="color:var(--ink-soft);">Couldn\'t load current pricing (' + err + '). <a href="mailto:sales@trakolo.com">Contact sales</a> for a quote.</p>';
+    document.getElementById('deploy-root').innerHTML = '';
+    document.getElementById('compare-root').innerHTML = '';
+  });
+
+function renderPricing(cfg){
+  document.getElementById('plans-root').innerHTML = cfg.editions.map(ed => {
+    const price = ed.priceLabel
+      ? '<p class="price">' + esc(ed.priceLabel) + '</p>'
+      : '<p class="price">£' + (ed.priceMonthly === 0 ? '0' : ed.priceMonthly.toFixed(2)) + '<span> ' + esc(ed.priceUnit || '') + '</span></p>' +
+        (ed.wasPriceMonthly ? '<p style="font-size:12.5px; color:var(--ink-faint); margin-top:-8px; margin-bottom:16px; text-decoration:line-through;">was £' + ed.wasPriceMonthly.toFixed(2) + '</p>' : '');
+    const badge = ed.badge ? '<span class="plan-badge"' + (ed.badgeStyle === 'muted' ? ' style="background:var(--ink-faint);"' : '') + '>' + esc(ed.badge) + '</span>' : '';
+    const btnClass = ed.cta.style === 'primary' ? 'btn-primary' : 'btn-ghost';
+    return '<div class="plan-card' + (ed.featured ? ' featured' : '') + '">' + badge +
+      '<h3>' + esc(ed.name) + '</h3>' +
+      '<p class="desc">' + esc(ed.description) + '</p>' +
+      price +
+      '<ul>' + ed.highlights.map(h => '<li>' + esc(h) + '</li>').join('') + '</ul>' +
+      '<a href="' + esc(ed.cta.href) + '" class="btn ' + btnClass + '">' + esc(ed.cta.label) + '</a>' +
+    '</div>';
+  }).join('');
+
+  document.getElementById('deploy-root').innerHTML = cfg.deployment.map(d => {
+    const btnClass = d.cta.style === 'primary' ? 'btn-primary' : 'btn-ghost';
+    return '<div class="plan-card"' + (d.key === 'onprem' ? ' style="border-color: var(--teal-600);"' : '') + '>' +
+      '<h3>' + esc(d.name) + '</h3>' +
+      '<p class="desc">' + esc(d.description) + '</p>' +
+      '<ul>' + d.bullets.map(b => '<li>' + esc(b) + '</li>').join('') + '</ul>' +
+      '<a href="' + esc(d.cta.href) + '" class="btn ' + btnClass + '">' + esc(d.cta.label) + '</a>' +
+    '</div>';
+  }).join('');
+
+  let rows = '<tr><th>Feature</th>' + cfg.editions.map(ed => '<th>' + esc(ed.name) + '</th>').join('') + '</tr>';
+  cfg.categories.forEach(cat => {
+    rows += '<tr><td colspan="' + (cfg.editions.length + 1) + '" style="background:var(--panel); font-family:\'Sora\',sans-serif; font-weight:600; color:var(--ink); padding-top:22px;">' + esc(cat.label) + '</td></tr>';
+    cat.features.forEach(f => {
+      rows += '<tr><td>' + esc(f.label) + '</td>' + cfg.editions.map(ed => {
+        const v = f.values[ed.key];
+        if(f.type === 'boolean') return v ? '<td class="yes">✓</td>' : '<td>—</td>';
+        return v === '✓' ? '<td class="yes">✓</td>' : '<td>' + esc(v) + '</td>';
+      }).join('') + '</tr>';
+    });
+  });
+  document.getElementById('compare-root').innerHTML = '<table class="compare-table">' + rows + '</table>';
+}
+</script>
 <script src="nav.js" defer></script>
 </body>
 </html>
