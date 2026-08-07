@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trakolo — Never lose track</title>
+<script>
+(function(){
+  var stored = localStorage.getItem('trakolo-theme');
+  var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
 <style>
@@ -22,6 +29,16 @@
     --teal-100: #9FE1CB;
     --teal-50: #E1F5EE;
     --coral: #D85A30;
+  }
+  :root[data-theme="dark"] {
+    --ink: #E7EFEB;
+    --ink-soft: #A9B9B2;
+    --ink-faint: #74857D;
+    --paper: #0B1512;
+    --panel: #12201C;
+    --line: #23342C;
+    --teal-50: #16332B;
+    --teal-800: #5FD1A8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -60,6 +77,17 @@
   .nav-actions { display: flex; align-items: center; gap: 16px; margin-left: auto; padding-left: 24px; }
   .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 8px; font-size: 18px; line-height: 1; width: 40px; height: 40px; align-items: center; justify-content: center; cursor: pointer; color: var(--ink); }
   .nav-signin-mobile { display: none; }
+
+  .theme-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; border-radius: 8px; flex-shrink: 0;
+    border: 1.5px solid var(--line); background: transparent; color: var(--ink-soft); cursor: pointer;
+  }
+  .theme-toggle:hover { border-color: var(--teal-600); color: var(--teal-600); }
+  .theme-toggle .icon-moon { display: block; }
+  .theme-toggle .icon-sun { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
   /* Hero */
   .hero {
@@ -109,6 +137,17 @@
   .badge-done { background: #EAF3DE; color: #3B6D11; }
   .mock-row .title { flex: 1; color: var(--ink); font-weight: 500; }
   .mock-row .meta { color: var(--ink-faint); font-size: 12px; }
+  [data-theme="dark"] .mock-header { background: #182420; }
+  [data-theme="dark"] .hero-visual { box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.45); }
+  [data-theme="dark"] .badge-progress,
+  [data-theme="dark"] .badge-done,
+  [data-theme="dark"] .fi-coral,
+  [data-theme="dark"] .fi-purple,
+  [data-theme="dark"] .fi-blue,
+  [data-theme="dark"] .fi-amber,
+  [data-theme="dark"] .fi-slate {
+    filter: brightness(0.82) saturate(0.85);
+  }
 
   /* Path signature divider */
   .path-track {
@@ -237,6 +276,10 @@
     </div>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+      </button>
       <a href="https://portal.trakolo.com/login" class="btn btn-ghost">Sign in</a>
       <a href="https://portal.trakolo.com/login" class="btn btn-primary">Start free</a>
     </div>

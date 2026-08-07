@@ -10,3 +10,13 @@
   links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
 })();
+
+(function(){
+  var themeToggle = document.getElementById('themeToggle');
+  if(!themeToggle) return;
+  themeToggle.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('trakolo-theme', next);
+  });
+})();
